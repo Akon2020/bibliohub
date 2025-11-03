@@ -5,6 +5,17 @@ import { useParams, useRouter } from "next/navigation"
 import { getBooks, getLoans, saveLoans, getCurrentUser } from "@/lib/storage"
 import { BookOpen, ArrowLeft, Check, AlertCircle } from "lucide-react"
 
+/* export async function generateStaticParams() {
+  const books = [
+    { id: "1" },
+    { id: "2" },
+    { id: "3" },
+    { id: "4" },
+    { id: "5" },
+  ]
+  return books.map((b) => ({ id: b.id }))
+} */
+
 export default function BookDetailPage() {
   const router = useRouter()
   const params = useParams()

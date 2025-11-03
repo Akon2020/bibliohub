@@ -1,4 +1,5 @@
 // Mock storage for the library system (replace with real DB)
+const isBrowser = typeof window !== "undefined"
 
 const STORAGE_KEYS = {
   USERS: "library_users",
@@ -9,6 +10,7 @@ const STORAGE_KEYS = {
 }
 
 export const initializeStorage = () => {
+  if (!isBrowser) return
   const existingUsers = localStorage.getItem(STORAGE_KEYS.USERS)
   if (!existingUsers) {
     const defaultAdmin = {
@@ -141,19 +143,39 @@ export const initializeStorage = () => {
   }
 }
 
-export const getUsers = () => JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || "[]")
-export const getBooks = () => JSON.parse(localStorage.getItem(STORAGE_KEYS.BOOKS) || "[]")
-export const getSubscribers = () => JSON.parse(localStorage.getItem(STORAGE_KEYS.SUBSCRIBERS) || "[]")
-export const getLoans = () => JSON.parse(localStorage.getItem(STORAGE_KEYS.LOANS) || "[]")
+export const getUsers = () =>
+  isBrowser ? JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || "[]") : []
 
-export const saveUsers = (users: any) => localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users))
-export const saveBooks = (books: any) => localStorage.setItem(STORAGE_KEYS.BOOKS, JSON.stringify(books))
-export const saveSubscribers = (subscribers: any) =>
-  localStorage.setItem(STORAGE_KEYS.SUBSCRIBERS, JSON.stringify(subscribers))
-export const saveLoans = (loans: any) => localStorage.setItem(STORAGE_KEYS.LOANS, JSON.stringify(loans))
+export const getBooks = () =>
+  isBrowser ? JSON.parse(localStorage.getItem(STORAGE_KEYS.BOOKS) || "[]") : []
 
-export const getCurrentUser = () => JSON.parse(localStorage.getItem(STORAGE_KEYS.CURRENT_USER) || "null")
+export const getSubscribers = () =>
+  isBrowser ? JSON.parse(localStorage.getItem(STORAGE_KEYS.SUBSCRIBERS) || "[]") : []
+
+export const getLoans = () =>
+  isBrowser ? JSON.parse(localStorage.getItem(STORAGE_KEYS.LOANS) || "[]") : []
+
+export const saveUsers = (users: any) => {
+  if (isBrowser) localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users))
+}
+
+export const saveBooks = (books: any) => {
+  if (isBrowser) localStorage.setItem(STORAGE_KEYS.BOOKS, JSON.stringify(books))
+}
+
+export const saveSubscribers = (subscribers: any) => {
+  if (isBrowser) localStorage.setItem(STORAGE_KEYS.SUBSCRIBERS, JSON.stringify(subscribers))
+}
+
+export const saveLoans = (loans: any) => {
+  if (isBrowser) localStorage.setItem(STORAGE_KEYS.LOANS, JSON.stringify(loans))
+}
+
+export const getCurrentUser = () =>
+  isBrowser ? JSON.parse(localStorage.getItem(STORAGE_KEYS.CURRENT_USER) || "null") : null
+
 export const setCurrentUser = (user: any) => {
+  if (!isBrowser) return
   if (user) {
     localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(user))
   } else {
