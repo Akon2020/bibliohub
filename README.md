@@ -20,11 +20,17 @@ Une application web moderne et complète pour la gestion d'une bibliothèque, av
 ## Accès à l'Application
 
 ### Compte de démo
-- **Email** : admin@bibliohub.fr
+- **Email** : admin@bibliohub.com
 - **Mot de passe** : admin123
 - **Rôle** : Administrateur
 
 L'interface admin permet de créer de nouveaux abonnés qui pourront ensuite se connecter avec leurs propres comptes.
+
+- **Email** : akonkwaushindi@gmail.com
+- **Mot de passe** : admin123
+- **Rôle** : Subscriber (abonné)
+
+L'interface client permet aux abonnés  de faire des reservations des livres si leurs statuts est disponible.
 
 ## Stack Technologique
 
