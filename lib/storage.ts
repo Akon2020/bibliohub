@@ -126,6 +126,15 @@ export const initializeStorage = () => {
       },
       {
         id: "4",
+        name: "Isaac Bumizi",
+        email: "isaacbumizi@gmail.com",
+        phone: "+243 998 877 665",
+        address: "Avenue Kalambo, Bukavu",
+        membershipDate: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000).toISOString(),
+        status: "active" as const,
+      },
+      {
+        id: "5",
         name: "MiRCo Rubambura",
         email: "mircorubambura4@gmail.com",
         phone: "+243 998 877 665",
